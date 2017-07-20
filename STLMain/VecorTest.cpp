@@ -7,10 +7,16 @@
 
 #include<iostream>
 #include<vector>
+#include "VectorTest.h"
 
 using namespace std;
-int main()
-{
+
+VectorTest::VectorTest() {
+
+}
+
+
+void VectorTest::TestMain() {
 	  int myints[]={10,20,30,40,50,60,70};
 	  vector<int> myvector (7);
 
@@ -21,7 +27,5 @@ int main()
 	    std::cout << ' ' << *it;
 
 	  std::cout << '\n';
-
-	  return 0;
 
 }
