@@ -20,3 +20,8 @@ int main()
 	m->MapExampe();
 
 }
+
+int MapTestMain()
+{
+
+}
