@@ -4,7 +4,7 @@
  *  Created on: 14Jun.,2018
  *      Author: di.wu
  */
-
+#include "Python.h"
 
 int main()
 {
