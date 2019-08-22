@@ -65,9 +65,6 @@ void MapTest:: MapExampe() {
 	 for( map<int,string>::reverse_iterator ii=Employees.rbegin(); ii!=Employees.rend(); ++ii)
 
 	 {
-
 	     cout << (*ii).first << ": " << (*ii).second << endl;
-
-	   }
-
+	 }
 }
