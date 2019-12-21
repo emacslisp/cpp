@@ -25,9 +25,13 @@ ST_DATA int tcc_ext = 1;
 /* XXX: get rid of this ASAP */
 ST_DATA struct TCCState *tcc_state;
 
+LIBTCCAPI void tcc_set_lib_path(TCCState *s, const char *path)
+{
+    tcc_free(s->tcc_lib_path);
+    s->tcc_lib_path = tcc_strdup(path);
+}
+
 /********************************************************/
-
-
 LIBTCCAPI TCCState *tcc_new(void)
 {
     TCCState *s;
@@ -35,6 +39,12 @@ LIBTCCAPI TCCState *tcc_new(void)
     int a,b,c;
     
     s = tcc_mallocz(sizeof(TCCState));
+
+    if (!s)
+        return NULL;
+    tcc_state = s;
+
+    tcc_set_lib_path(s, CONFIG_TCCDIR);
 
     return s;
 
