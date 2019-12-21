@@ -6,9 +6,12 @@
  */
 
 #include<iostream>
+#include "ReverseLinkedList92.cpp"
+
 using namespace std;
 int main()
 {
-	cout<<"Leetcode Entry"<<endl;
+	ReverseLinkedList92 s;
+	s.main();
 	return 0;
 }
