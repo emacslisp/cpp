@@ -1,0 +1,21 @@
+* #define with #include
+
+enum tcc_token {
+    TOK_LAST = TOK_IDENT - 1,
+#define DEF(id, str) id,
+#include "tcctok.h"
+#undef DEF
+};
+
+if we want to match enum to cretain value, what we would do is to 
+
+enum tcc_token {
+   TOK_INT, //int
+}
+
+
+but in tcc, there is more elegent way to 
+
+#define
+
+move it to be clang.html in html doc
