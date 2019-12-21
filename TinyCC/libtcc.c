@@ -46,6 +46,10 @@ LIBTCCAPI TCCState *tcc_new(void)
 
     tcc_set_lib_path(s, CONFIG_TCCDIR);
 
+    s->output_type = TCC_OUTPUT_MEMORY;
+    preprocess_new();
+    s->include_stack_ptr = s->include_stack;
+
     return s;
 
 }
