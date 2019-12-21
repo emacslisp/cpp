@@ -33,3 +33,5 @@
 
 # Eclipse Workspace
 ec
+
+*.settings.xml
