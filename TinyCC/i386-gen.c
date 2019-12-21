@@ -6,6 +6,9 @@
 //  Copyright © 2017 eddy.wu. All rights reserved.
 //
 
+#define TARGET_DEFS_ONLY
+#define TCC_TARGET_I386
+
 #ifdef TARGET_DEFS_ONLY
 
 #define LDOUBLE_SIZE  12

@@ -210,6 +210,27 @@ static void tcc_cleanup(void)
 }
 
 /********************************************************/
+/* copy a string and truncate it. */
+PUB_FUNC char *pstrcpy(char *buf, int buf_size, const char *s)
+{
+    char *q, *q_end;
+    int c;
+
+    if (buf_size > 0) {
+        q = buf;
+        q_end = buf + buf_size - 1;
+        while (q < q_end) {
+            c = *s++;
+            if (c == '\0')
+                break;
+            *q++ = c;
+        }
+        *q = '\0';
+    }
+    return buf;
+}
+
+/********************************************************/
 /* I/O layer */
 
 ST_FUNC void tcc_open_bf(TCCState *s1, const char *filename, int initlen)
