@@ -15,6 +15,6 @@ int main()
     char *oldloc;
 
     /* Force malloc() allocator to bootstrap Python */
-    (void)_PyMem_SetupAllocators("malloc");
-
+    // (void)_PyMem_SetupAllocators("malloc");
+    printf("main in different folder!!!");
 }
