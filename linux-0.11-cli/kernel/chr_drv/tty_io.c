@@ -103,7 +103,50 @@ struct tty_queue * table_list[]={
 	&tty_table[2].read_q, &tty_table[2].write_q
 	};
 
+static void sleep_if_full(struct tty_queue * queue)
+{
+	if (!FULL(*queue))
+		return;
+	cli();
+	while (!current->signal && LEFT(*queue)<128)
+		interruptible_sleep_on(&queue->proc_list);
+	sti();
+}
+
 int tty_write(unsigned channel, char * buf, int nr)
 {
+	static int cr_flag=0;
+	struct tty_struct * tty;
+	char c, *b=buf;
 
+	if (channel>2 || nr<0) return -1;
+	tty = channel + tty_table;
+	while (nr>0) {
+		sleep_if_full(&tty->write_q);
+		if (current->signal)
+			break;
+		while (nr>0 && !FULL(tty->write_q)) {
+			c=get_fs_byte(b);
+			if (O_POST(tty)) {
+				if (c=='\r' && O_CRNL(tty))
+					c='\n';
+				else if (c=='\n' && O_NLRET(tty))
+					c='\r';
+				if (c=='\n' && !cr_flag && O_NLCR(tty)) {
+					cr_flag = 1;
+					PUTCH(13,tty->write_q);
+					continue;
+				}
+				if (O_LCUC(tty))
+					c=toupper(c);
+			}
+			b++; nr--;
+			cr_flag = 0;
+			PUTCH(c,tty->write_q);
+		}
+		tty->write(tty);
+		if (nr>0)
+			schedule();
+	}
+	return (b-buf);
 }

@@ -5,10 +5,6 @@
  *      Author: wudi
  */
 
-#include<stdio.h>
-#include<math.h>
-
-#include<stdbool.h>
 
 int main(int argc, char *argv[]) {
 

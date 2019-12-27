@@ -6,7 +6,10 @@
  */
 
 
-
+#include <linux/sched.h>
+#include <linux/tty.h>
+#include <asm/io.h>
+#include <asm/system.h>
 
 void con_write(struct tty_struct * tty)
 {
