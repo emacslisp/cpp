@@ -55,5 +55,5 @@ int printk(const char *fmt, ...)
 }
 
 void printk_test() {
-	printk("%s\nconsole id is:%d\n", "this is debug information from kernel", 0);
+	printk("%s\nconsole id is:%d\n", "this is debug information from kernel", -10 & 1023);
 }
