@@ -36,6 +36,10 @@ int printk(const char *fmt, ...)
 	va_start(args, fmt);
 	i=vsprintf(buf,fmt,args);
 	va_end(args);
+
+	// 0 is for console write
+	tty_write(0, buf, i);
+
 	/*__asm__("push %%fs\n\t"
 		"push %%ds\n\t"
 		"pop %%fs\n\t"
@@ -48,4 +52,8 @@ int printk(const char *fmt, ...)
 		"pop %%fs"
 		::"r" (i):"ax","cx","dx");*/
 	return i;
+}
+
+void printk_test() {
+	printk("%s\nconsole id is:%d\n", "this is debug information from kernel", 0);
 }
