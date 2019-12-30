@@ -13,6 +13,8 @@ int main(int argc, char *argv[]) {
 
 	// mktime_test();
 
-	printk_test();
+	// printk_test();
+
+
 	return 0;
 }

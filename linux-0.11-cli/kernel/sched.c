@@ -78,3 +78,16 @@ void interruptible_sleep_on(struct task_struct **p)
 {
 
 }
+
+void sleep_on(struct task_struct **p)
+{
+
+}
+
+void wake_up(struct task_struct **p)
+{
+	if (p && *p) {
+		(**p).state=0;
+		*p=NULL;
+	}
+}

@@ -150,3 +150,8 @@ int tty_write(unsigned channel, char * buf, int nr)
 	}
 	return (b-buf);
 }
+
+void wait_for_keypress(void)
+{
+	// sleep_if_empty(&tty_table[0].secondary);
+}
