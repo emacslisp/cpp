@@ -6,5 +6,12 @@
  */
 
 
+#include <linux/head.h>
 
 
+desc_table idt,gdt;
+
+
+void boot() {
+// boot from sector,
+}

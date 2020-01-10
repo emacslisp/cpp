@@ -63,3 +63,8 @@ void con_write(struct tty_struct * tty)
 			printf("%c", c);
 		}
 }
+
+void con_init(void)
+{
+	// don't have to do anything here, use normal console to simulate
+}

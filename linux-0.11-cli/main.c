@@ -30,6 +30,11 @@ extern long rd_init(long mem_start, int length);
 extern long kernel_mktime(struct tm * tm);
 extern long startup_time;
 
+static void time_init(void)
+{
+
+}
+
 void init_test() {
 	struct drive_info { char dummy[32]; } drive_info;
 	/*
@@ -57,6 +62,12 @@ void init_test() {
 	main_memory_start += rd_init(main_memory_start, RAMDISK*1024);
 #endif
 	mem_init(main_memory_start,memory_end);
+	blk_dev_init();
+	chr_dev_init();
+
+	tty_init();
+	time_init();
+	sched_init();
 }
 
 int main(int argc, char *argv[]) {
