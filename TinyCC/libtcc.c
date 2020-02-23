@@ -25,9 +25,13 @@ ST_DATA int tcc_ext = 1;
 /* XXX: get rid of this ASAP */
 ST_DATA struct TCCState *tcc_state;
 
+LIBTCCAPI void tcc_set_lib_path(TCCState *s, const char *path)
+{
+    tcc_free(s->tcc_lib_path);
+    s->tcc_lib_path = tcc_strdup(path);
+}
+
 /********************************************************/
-
-
 LIBTCCAPI TCCState *tcc_new(void)
 {
     TCCState *s;
@@ -35,6 +39,16 @@ LIBTCCAPI TCCState *tcc_new(void)
     int a,b,c;
     
     s = tcc_mallocz(sizeof(TCCState));
+
+    if (!s)
+        return NULL;
+    tcc_state = s;
+
+    tcc_set_lib_path(s, CONFIG_TCCDIR);
+
+    s->output_type = TCC_OUTPUT_MEMORY;
+    preprocess_new();
+    s->include_stack_ptr = s->include_stack;
 
     return s;
 
@@ -207,6 +221,27 @@ static void tcc_cleanup(void)
     tcc_state = NULL;
 
     
+}
+
+/********************************************************/
+/* copy a string and truncate it. */
+PUB_FUNC char *pstrcpy(char *buf, int buf_size, const char *s)
+{
+    char *q, *q_end;
+    int c;
+
+    if (buf_size > 0) {
+        q = buf;
+        q_end = buf + buf_size - 1;
+        while (q < q_end) {
+            c = *s++;
+            if (c == '\0')
+                break;
+            *q++ = c;
+        }
+        *q = '\0';
+    }
+    return buf;
 }
 
 /********************************************************/
