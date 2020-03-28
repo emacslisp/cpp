@@ -48,6 +48,7 @@ static inline void lock_buffer(struct buffer_head * bh)
 	sti();
 }
 
+
 static inline void unlock_buffer(struct buffer_head * bh)
 {
 	if (!bh->b_lock)

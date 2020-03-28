@@ -18,6 +18,7 @@
 #include <sys/types.h>
 
 #include <linux/fs.h>
+struct drive_info { char dummy[32]; } drive_info;
 
 extern int vsprintf();
 extern void init(void);
@@ -33,6 +34,18 @@ extern long startup_time;
 static void time_init(void)
 {
 
+}
+
+void init() {
+	int pid,i;
+
+	struct drive_info drive_info;
+	memset(&drive_info, 0, sizeof(drive_info));
+
+	// @todo: mount root system here.
+	setup((void *) &drive_info);
+
+	(void) open("/dev/tty0",O_RDWR,0);
 }
 
 void init_test() {
@@ -68,6 +81,12 @@ void init_test() {
 	tty_init();
 	time_init();
 	sched_init();
+
+	buffer_init(buffer_memory_end);
+	hd_init();
+	floppy_init();
+	init();
+
 }
 
 int main(int argc, char *argv[]) {
