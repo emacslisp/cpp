@@ -7,11 +7,13 @@
 //
 
 #include <iostream>
+#include "MapTest.hpp"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello from XCode" <<endl;
+    MapTest mapTest;
+    mapTest.main();
     return 0;
 }
