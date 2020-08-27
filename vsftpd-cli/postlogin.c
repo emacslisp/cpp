@@ -1,3 +1,40 @@
+#include "postlogin.h"
+#include "session.h"
+#include "oneprocess.h"
+
+/* Private local functions */
+static void handle_pwd(struct vsf_session* p_sess);
+static void handle_cwd(struct vsf_session* p_sess);
+static void handle_pasv(struct vsf_session* p_sess, int is_epsv);
+static void handle_retr(struct vsf_session* p_sess, int is_http);
+static void handle_cdup(struct vsf_session* p_sess);
+static void handle_list(struct vsf_session* p_sess);
+static void handle_type(struct vsf_session* p_sess);
+static void handle_port(struct vsf_session* p_sess);
+static void handle_stor(struct vsf_session* p_sess);
+static void handle_mkd(struct vsf_session* p_sess);
+static void handle_rmd(struct vsf_session* p_sess);
+static void handle_dele(struct vsf_session* p_sess);
+static void handle_rest(struct vsf_session* p_sess);
+static void handle_rnfr(struct vsf_session* p_sess);
+static void handle_rnto(struct vsf_session* p_sess);
+static void handle_nlst(struct vsf_session* p_sess);
+static void handle_size(struct vsf_session* p_sess);
+static void handle_site(struct vsf_session* p_sess);
+static void handle_appe(struct vsf_session* p_sess);
+static void handle_mdtm(struct vsf_session* p_sess);
+static void handle_site_chmod(struct vsf_session* p_sess,
+                              struct mystr* p_arg_str);
+static void handle_site_umask(struct vsf_session* p_sess,
+                              struct mystr* p_arg_str);
+static void handle_eprt(struct vsf_session* p_sess);
+static void handle_help(struct vsf_session* p_sess);
+static void handle_stou(struct vsf_session* p_sess);
+static void handle_stat(struct vsf_session* p_sess);
+static void handle_stat_file(struct vsf_session* p_sess);
+static void handle_logged_in_user(struct vsf_session* p_sess);
+static void handle_logged_in_pass(struct vsf_session* p_sess);
+static void handle_http(struct vsf_session* p_sess);
 
 void process_post_login(struct vsf_session* p_sess)
 {

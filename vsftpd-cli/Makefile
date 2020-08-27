@@ -5,13 +5,13 @@ CC = gcc
 CFLAGS = -gdwarf-2 -g3
 LIBS = -lglut -lGL -lGLU -lm
 
-All: Cat
+All: vsftpd-cli
 
 .c.o:
 	$(CC) -c $(CFLAGS) $*.cpp
 
-Cat:
-	$(CC) $(CFLAGS) -o postlogin $(LIBDIRS) postlogin.c $(LIBDIRS)
+vsftpd-cli:
+	$(CC) $(CFLAGS) -o vsftpd-cli $(LIBDIRS) *.c $(LIBDIRS)
 
 clean:
 	rm -f *.o
