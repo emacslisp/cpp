@@ -15,5 +15,4 @@ vsftpd-cli:
 
 clean:
 	rm -f *.o
-	rm cat
-	rm *~
+	rm vsftpd-cli
