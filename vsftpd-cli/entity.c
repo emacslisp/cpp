@@ -25,3 +25,13 @@ void pidEntry()
 
     printf("%d\n", vsf_sysutil_getpid_nocache());
 }
+
+void strEntry() {
+    struct mystr str = INIT_MYSTR;
+    str_alloc_text(&str, vsf_sysutil_get_current_date());
+    str_append_text(&str, "Hello World");
+    str_append_ulong(&str, 1234);
+    str_append_char(&str, 'a');
+    printf("%s\n", str.PRIVATE_HANDS_OFF_p_buf);
+    printf("%d\n", str.PRIVATE_HANDS_OFF_len);
+}

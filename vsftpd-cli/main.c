@@ -65,6 +65,6 @@ main(int argc, const char* argv[])
     0
   };
 
-  pidEntry();
+  strEntry();
 }
 

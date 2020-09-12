@@ -1,1 +1,2 @@
 void pidEntry();
+void strEntry();
