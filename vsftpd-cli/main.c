@@ -18,6 +18,7 @@
 #include "vsftpver.h"
 #include "ssl.h"
 
+#include "entity.h"
 /*
  * Forward decls of helper functions
  */
@@ -64,8 +65,6 @@ main(int argc, const char* argv[])
     0
   };
 
-enum EVSFSysUtilOpenMode open_mode = kVSFSysUtilOpenReadWrite;
-printf("%d\n", open_mode);
-
-printf("%d\n", vsf_sysutil_getpid_nocache());
+  pidEntry();
 }
+
