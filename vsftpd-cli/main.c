@@ -64,7 +64,11 @@ main(int argc, const char* argv[])
     /* Login fails */
     0
   };
+  int config_loaded = 0;
+  int i;
+  tunables_load_defaults();
 
+  vsf_parseconf_load_file("./vsftpd.conf", 1);
   strEntry();
 }
 
