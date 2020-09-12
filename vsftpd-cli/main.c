@@ -66,4 +66,6 @@ main(int argc, const char* argv[])
 
 enum EVSFSysUtilOpenMode open_mode = kVSFSysUtilOpenReadWrite;
 printf("%d\n", open_mode);
+
+printf("%d\n", vsf_sysutil_getpid_nocache());
 }
