@@ -66,9 +66,9 @@ main(int argc, const char* argv[])
   };
   int config_loaded = 0;
   int i;
-  tunables_load_defaults();
+  // tunables_load_defaults();
 
-  vsf_parseconf_load_file("./vsftpd.conf", 1);
-  strEntry();
+  // vsf_parseconf_load_file("./vsftpd.conf", 1);
+  getcwdEntry();
 }
 
