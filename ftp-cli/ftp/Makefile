@@ -8,7 +8,7 @@ LIBS = -lglut -lGL -lGLU -lm
 All: vsftpd-cli
 
 .c.o:
-	$(CC) -c $(CFLAGS) $*.cpp
+	$(CC) -c $(CFLAGS) $*.c
 
 vsftpd-cli:
 	$(CC) $(CFLAGS) -o ftp-cli $(LIBDIRS) *.c $(LIBDIRS)
