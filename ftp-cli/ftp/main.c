@@ -74,6 +74,9 @@ main(volatile int argc, char **volatile argv)
 	struct passwd *pw = NULL;
 	char homedir[MAXPATHLEN];
 
+	register struct cmd *c;
+	char *marg;
+
 	tick = 0;
 
 	sp = getservbyname("ftp", "tcp");
@@ -82,6 +85,31 @@ main(volatile int argc, char **volatile argv)
 		exit(1);
 	}
 	ftp_port = sp->s_port;
+	printf("%d\n", ftp_port);
+	printf("%s %s\n", sp->s_name, sp->s_proto);
+
+	cp = getlogin();
+	if (cp != NULL) {
+		pw = getpwnam(cp);
+	}
+	printf("%s %s %s\n", pw->pw_name, pw->pw_passwd, pw->pw_dir);
+
+	pw = getpwuid(getuid());
+	printf("%s %s %s\n", pw->pw_name, pw->pw_passwd, pw->pw_dir);
+
+	if (pw != NULL) {
+		strncpy(homedir, pw->pw_dir, sizeof(homedir));
+		homedir[sizeof(homedir)-1] = 0;
+		home = homedir;
+	}
+	printf("%s\n", home);
+
+	c = getcmd("verbose");
+	printf("%d\n", c->c_conn);
+
+	if (c->c_handler_v) c->c_handler_v(argc, argv);
+	else if (c->c_handler_0) c->c_handler_0();
+	else c->c_handler_1(marg);
 }
 
 
