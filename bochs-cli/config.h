@@ -313,7 +313,7 @@
 #define WX_MSW_UNICODE 0
 
 // A certain functions must NOT be fastcall even if compiled with fastcall
-// option, and those are callbacks from Windows which are defined either
+// option, and those are callbacks from Windows which are defined either 
 // as cdecl or stdcall. The entry point main() also has to remain cdecl.
 #ifndef CDECL
 #if defined(_MSC_VER)

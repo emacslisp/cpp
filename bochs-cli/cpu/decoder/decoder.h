@@ -123,7 +123,7 @@ enum {
   BX_ISA_MOVDIRI,                 /* MOVDIRI instruction support */
   BX_ISA_MOVDIRI64,               /* MOVDIRI64 instruction support */
   BX_ISA_EXTENSION_LAST
-};
+};                            
 
 #define BX_ISA_EXTENSIONS_ARRAY_SIZE (4)
 
