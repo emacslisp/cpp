@@ -1,17 +1,17 @@
-LIBDIRS = -L /usr/local/lib
+LIBDIRS = -L /usr/local/lib -L.
 INCDIRS = -I /usr/include -I /usr/local/include/GL -I ../../../../src/shared -I/usr/include/GL
 
-CC = gcc
+CC = g++
 CFLAGS = -gdwarf-2 -g3
 LIBS = -lm
 
 All: bochs-cli
 
-.c.o:
-	$(CC) -c $(CFLAGS) $*.cpp
+crc.o:
+	$(CC) -c $(CFLAGS) *.cc
 
-bochs-cli:
-	$(CC) $(CFLAGS) -o bochs-cli $(LIBDIRS) main.cpp $(LIBDIRS)
+bochs-cli: crc.o
+	$(CC) $(CFLAGS) -o bochs-cli main.cpp *.o $(INCDIRS) $(LIBDIRS)
 
 clean:
 	rm -f *.o
