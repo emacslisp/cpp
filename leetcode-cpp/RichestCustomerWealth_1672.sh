@@ -1,0 +1,1 @@
+g++ -g3 -std=c++11 RichestCustomerWealth_1672.cpp -o RichestCustomerWealth_1672.run
