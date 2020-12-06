@@ -1,0 +1,1 @@
+g++ -g3 RunningSumof1dArray_1480.cpp -o RunningSumof1dArray_1480
