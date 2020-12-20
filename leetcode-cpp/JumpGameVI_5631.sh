@@ -1,0 +1,1 @@
+g++ -g3 -std=c++11 JumpGameVI_5631.cpp -o JumpGameVI_5631.run
