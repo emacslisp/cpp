@@ -1,1 +1,3 @@
-g++ -g3 -std=c++11 RichestCustomerWealth_1672.cpp -o RichestCustomerWealth_1672.run
+me=`basename "$0"`
+fbname=${me%.*}
+g++ -g3 -std=c++11 ${fbname}.cpp -o ${fbname}.run
