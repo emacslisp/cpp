@@ -11,6 +11,7 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "sstream": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "random": "cpp"
     }
 }
