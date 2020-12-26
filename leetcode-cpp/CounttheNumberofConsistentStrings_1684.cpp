@@ -2,33 +2,47 @@
 #include<iostream>
 using namespace std;
 
+
 class Solution {
 public:
-    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
-        string s1="";
-        string s2="";
-        for (string x: word1) {
-            s1+=x;
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        vector<int> a(26);
+        int counter = 0;
+        for(int i=0;i<26;i++) {
+            a[i] = 0;
         }
 
-        for (string x: word2) {
-            s2+=x;
+        for(char c: allowed) {
+            a[c - 'a'] = 1;
         }
 
-        if (s1==s2) {
-            return true;
+        for(string x: words) {
+            bool isMatched = true;
+            for(char c: x) {
+                if (a[c -'a'] != 1) {
+                    isMatched = false;
+                    break;
+                }
+            }
+
+            if (isMatched) {
+                counter++;
+            }
         }
 
-        return false;
+        return counter;
     }
 };
 
 int main() {
     Solution s;
+    vector<string> words
+    {
+       "a","b","c","ab","ac","bc","abc"
+    };
 
-    vector<string> word1 {"a", "cb"};
-    vector<string> word2 {"ab", "c"};
+    string allowed = "abc";
 
-    bool result = s.arrayStringsAreEqual(word1, word2);
-    cout<< result << endl;
+    int result = s.countConsistentStrings(allowed, words);
+    cout<<result<<endl;
 }
