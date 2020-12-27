@@ -19,19 +19,59 @@ struct ListNode {
 class Solution {
 public:
     int getDecimalValue(ListNode* head) {
+        head = revertList(head);
+
+        int result = 0;
+        int bin = 1;
+        ListNode * p = head;
+        while(p!=NULL) {
+            result += p->val*bin;
+            bin *=2;
+            p=p->next;
+        }
+
+        return result;
+    }
+
+    ListNode* revertList(ListNode* head) {
+    	if(head == NULL) return NULL;
+        if(head -> next == NULL) return head;
         
+    	ListNode* prev = NULL;
+        ListNode* current = head;
+        ListNode* next = NULL;
+        
+        while(current != NULL) {
+        	next = current -> next;
+        	current->next = prev;
+        	prev = current;
+        	current = next;
+        }
+
+        return prev;
     }
 };
+
+ListNode* initListNode(vector<int> c) {
+    ListNode* head = new ListNode(c[0]);
+    	ListNode* p = head;
+    	for(int i=1;i<c.size();i++) {
+    		p->next = new ListNode(c[i]);
+    		p = p->next;
+    	}
+    	
+    	return head;
+}
 
 int main() {
     Solution s;
     vector<int> c
     {
-       4,5,6,7,0,2,1,3
+       1,0,0,1,0,0,1,1,1,0,0,0,0,0,0
     };
 
-    string str = "codeleet";
+    ListNode* head = initListNode(c);
 
-    string result = s.getDecimalValue(str, c);
+    int result = s.getDecimalValue(head);
     cout<<result<<endl;
 }
