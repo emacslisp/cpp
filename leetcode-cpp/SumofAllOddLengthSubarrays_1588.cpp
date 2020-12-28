@@ -22,8 +22,9 @@ public:
         result = 0;
         for(int length=1;length<=arr.size();length+=2) {
             result += sums[length - 1];
-            for(int i=0;i<arr.size();i+=length) {
-                result += (sums[i+length] - sums[i]);
+            for(int i=0;i<arr.size();i+=1) {
+                if (i+length < arr.size())
+                    result += (sums[i+length] - sums[i]);
             }
         }
 
@@ -35,7 +36,7 @@ int main() {
     Solution s;
     vector<int> c
     {
-       1,4,2,5,3
+       10,11,12
     };
 
     int result = s.sumOddLengthSubarrays(c);
