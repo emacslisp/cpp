@@ -1,6 +1,6 @@
 for fname in *.cpp
 do
-    if [[ "${fname%%.*}" != "main" ]]; then
+    if [ "${fname%%.*}" != "main" ]; then
         g++ -c ${fname%%.*}.cpp -o ${fname%%.*}.o
     fi
 done
