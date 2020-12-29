@@ -1,8 +1,10 @@
 #include<vector>
 #include<iostream>
+#include "ListNode.h"
 using namespace std;
 
 class LinkedListAlgorithm {
     public:
-        void test();
+        ListNode* revertList(ListNode* head);
+        ListNode* arrayToList(vector<int> c);
 };
