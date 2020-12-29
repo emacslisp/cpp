@@ -1,6 +1,7 @@
 #include "LinkedListAlgorithm.h"
+#include "QueueHelper.h"
 
 int main() {
-    LinkedListAlgorithm a;
-    a.test();
+    QueueHelper a;
+    a.MainEntry();
 }
