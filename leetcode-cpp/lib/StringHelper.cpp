@@ -16,3 +16,14 @@ bool StringHelper::isPalindrom(string s)
     }
     return result;
 }
+
+int StringHelper::isNum(char *s)
+{
+  return (*s - '0') >= 0&&(*s - '0') <= 9;
+}
+
+int StringHelper::isLetter(char *s)
+{
+  return ((*s - 'a') >= 0&&(*s - 'z') <= 0)
+    ||((*s - 'A') >= 0&&(*s - 'Z') <= 0);
+}
