@@ -1,7 +1,8 @@
 #include "LinkedListAlgorithm.h"
 #include "QueueHelper.h"
+#include "Graph.h"
 
 int main() {
-    QueueHelper a;
+    Graph a;
     a.MainEntry();
 }
