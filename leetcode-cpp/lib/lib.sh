@@ -1,7 +1,7 @@
 for fname in *.cpp
 do
     if [ "${fname%%.*}" != "main" ]; then
-        g++ -gdwarf-2 -g3 -c ${fname%%.*}.cpp -o ${fname%%.*}.o
+        g++ -gdwarf-2 -g3 -fPIC -c ${fname%%.*}.cpp -o ${fname%%.*}.o
     fi
 done
 
