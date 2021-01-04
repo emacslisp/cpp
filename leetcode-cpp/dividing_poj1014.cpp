@@ -54,8 +54,8 @@ int main(int argc, char **argv)
 {
 
 #ifdef FILEIO
-    freopen("poj_dividing_1014.in", "r", stdin);
-    freopen("poj_dividing_1014.out", "w", stdout);
+    freopen("dividing_poj1014.in", "r", stdin);
+    freopen("dividing_poj1014.out", "w", stdout);
 #endif
 
     int a[6];
