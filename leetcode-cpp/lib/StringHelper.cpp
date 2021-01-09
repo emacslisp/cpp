@@ -1,5 +1,16 @@
 #include "StringHelper.h"
 
+string StringHelper::revert(string s) {
+    reverse(s.begin(), s.end());
+    return s;
+}
+
+int StringHelper::MainEntry() {
+    StringHelper s;
+    cout << s.revert("abcdef") << endl;
+    return 0;
+}
+
 bool StringHelper::isPalindrom(string s)
 {
     bool result = true;
