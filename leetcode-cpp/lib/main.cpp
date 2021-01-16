@@ -3,6 +3,7 @@
 #include "Graph.h"
 #include "StringHelper.h"
 #include "NumberHelper.h"
+#include "Tree.h"
 
 int main() {
     // Graph a;
@@ -12,5 +13,9 @@ int main() {
 
     NumberHelper n;
     n.MainEntry();
+
+    Tree t;
+    t.MainEntry();
+    
     return 0;
 }
