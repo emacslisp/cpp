@@ -5,6 +5,12 @@ string StringHelper::revert(string s) {
     return s;
 }
 
+string StringHelper::charToString(char c) {
+    string s;
+    s.push_back(c);
+    return s;
+}
+
 int StringHelper::MainEntry() {
     StringHelper s;
     cout << s.revert("abcdef") << endl;
