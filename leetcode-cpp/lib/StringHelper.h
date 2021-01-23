@@ -13,4 +13,6 @@ public:
 
     int MainEntry();
     vector<string> splitByChar(string s, char c);
+    char tolower(char c);
+    string toLowerStr(string s);
 };

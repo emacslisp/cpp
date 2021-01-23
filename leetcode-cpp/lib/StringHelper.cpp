@@ -1,5 +1,20 @@
 #include "StringHelper.h"
 
+string StringHelper::toLowerStr(string s) {
+    string result;
+    for(char c:s) {
+        result.push_back(tolower(c));
+    }
+    return result;
+}
+
+char StringHelper::tolower(char c) {
+    if (c >= 'A' && c<='Z') {
+        c = c - ('Z' - 'z');
+    }
+    return c;
+}
+
 vector<string> StringHelper::splitByChar(string s, char c) {
     vector<string> result;
     string t;
@@ -26,17 +41,6 @@ string StringHelper::charToString(char c) {
     return s;
 }
 
-int StringHelper::MainEntry() {
-    StringHelper s;
-    cout << s.revert("abcdef") << endl;
-
-    string x = "I want to do something!!1";
-    vector<string> result = s.splitByChar(x, ' ');
-    for(string m: result) {
-        cout<<m<<endl;
-    }
-    return 0;
-}
 
 bool StringHelper::isPalindrom(string s)
 {
@@ -64,4 +68,20 @@ int StringHelper::isLetter(char *s)
 {
   return ((*s - 'a') >= 0&&(*s - 'z') <= 0)
     ||((*s - 'A') >= 0&&(*s - 'Z') <= 0);
+}
+
+
+int StringHelper::MainEntry() {
+    StringHelper s;
+    cout << s.revert("abcdef") << endl;
+
+    string x = "I want to do something!!1";
+    vector<string> result = s.splitByChar(x, ' ');
+    for(string m: result) {
+        cout<<m<<endl;
+    }
+
+    cout<<"toLowerStr example:"<<endl;
+    cout<<s.toLowerStr(x)<<endl;
+    return 0;
 }
