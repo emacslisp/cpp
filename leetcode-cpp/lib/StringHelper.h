@@ -12,4 +12,5 @@ public:
     int isLetter(char *s);
 
     int MainEntry();
+    vector<string> splitByChar(string s, char c);
 };
