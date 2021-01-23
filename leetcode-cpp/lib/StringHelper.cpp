@@ -3,14 +3,29 @@
 string StringHelper::toLowerStr(string s) {
     string result;
     for(char c:s) {
-        result.push_back(tolower(c));
+        result.push_back(toLower(c));
     }
     return result;
 }
 
-char StringHelper::tolower(char c) {
+char StringHelper::toLower(char c) {
     if (c >= 'A' && c<='Z') {
         c = c - ('Z' - 'z');
+    }
+    return c;
+}
+
+string StringHelper::toUpperStr(string s) {
+    string result;
+    for(char c:s) {
+        result.push_back(toUpper(c));
+    }
+    return result;
+}
+
+char StringHelper::toUpper(char c) {
+    if (c >= 'a' && c<='z') {
+        c = c + ('Z' - 'z');
     }
     return c;
 }
@@ -83,5 +98,8 @@ int StringHelper::MainEntry() {
 
     cout<<"toLowerStr example:"<<endl;
     cout<<s.toLowerStr(x)<<endl;
+
+    cout<<"toUpperStr example:"<<endl;
+    cout<<s.toUpperStr(x)<<endl;
     return 0;
 }
