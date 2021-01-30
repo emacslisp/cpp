@@ -12,6 +12,21 @@
 
 using namespace std;
 
+string generate(int c) {
+    string result;
+    if(c==0) return "";
+    if(c>0) {
+        for(int i=0;i<c;i++) {
+            result.push_back('(');
+        }
+    } else {
+        for(int i=0;i<(-c);i++) {  
+            result.push_back(')');
+        }
+    }
+    return result;
+}
+
 int main(int argc, char **argv)
 {
 
@@ -20,69 +35,40 @@ int main(int argc, char **argv)
     freopen("NestingDepth_CodeJam2020_B.out", "w", stdout);
 #endif
 
-    int N, T;
+    int N;
     scanf("%d\n", &N);
-
-    int array[100][100];
-
-    for (int i = 0; i < N; i++)
+    char s[102];
+    for (int o = 0; o < N; o++)
     {
-        scanf("%d\n", &T);
+        memset(s, 0, 102*sizeof(char));
+        scanf("%s\n", s);
 
-        memset(array, 0, 100*100*sizeof(int));
-
-        for (int m = 0; m < T; m++)
-        {
-            for (int n = 0; n < T; n++)
-            {
-                scanf("%d", &array[m][n]);
-            }
-        }
-
-        int sum = 0;
-        int rCount = 0;
-        int cCount = 0;
-        map<int, int> r;
-        map<int, int> c;
-        bool rDup,cDup;
-        for (int m = 0; m < T; m++)
-        {
-            r.clear();
-            rDup = false;
-            for (int n = 0; n < T; n++)
-            {
-                if(m==n) sum+=array[m][n];
-                if(r.count(array[m][n]) > 0) {
-                    rDup = true;
-                } else {
-                    r[array[m][n]] = 1;
+        int i=0;
+        char c = s[0];
+        string t;
+        string result = generate(c-'0');
+        while (true) {
+            if(s[i] == c) {
+                t.push_back(c);
+            } else {
+                if(t.size() > 0) {
+                    result+=(t + generate(s[i] - c));
+                    t="";
+                    c = s[i];
+                    t.push_back(c);
                 }
             }
 
-            if(rDup) {
-                rCount++;
-            }
-        }
-
-        for (int n = 0; n < T; n++)
-        {
-            c.clear();
-            cDup = false;
-            for (int m = 0; m < T; m++)
-            {
-                if(c.count(array[m][n]) > 0) {
-                    cDup = true;
-                } else {
-                    c[array[m][n]] = 1;
+            i++;
+            if(s[i] == '\0') {
+                if(t.size() > 0) {
+                    result+=(t + generate('0' - t[0]));
                 }
-            }
-
-            if(cDup) {
-                cCount++;
+                break;
             }
         }
-
-        printf("Case #%d: %d %d %d\n", (i+1), sum, rCount, cCount);
+        
+        cout << "Case #" << (o+1) << ": "<<result<<endl;
     }
 
 #ifdef FILEIO
