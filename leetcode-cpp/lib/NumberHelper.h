@@ -12,5 +12,6 @@ using namespace std;
 class NumberHelper {
 public:
     string NumberToBinary(int N);
+    string thousandSeparator(int n);
     int MainEntry();
 };
