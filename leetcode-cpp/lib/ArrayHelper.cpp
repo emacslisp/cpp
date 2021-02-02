@@ -8,3 +8,29 @@ vector<int> ArrayHelper::revert(vector<int> c) {
     reverse(c.begin(), c.end());
     return c;
 }
+
+int ArrayHelper::maxSubArray(vector<int> nums) {
+    if(nums.size() == 1)return nums[0];
+      
+        int sum = 0;
+       int maxSum = INT32_MIN;
+      for(int i =0;i<nums.size();i++){
+        if(sum < 0){
+          sum = nums[i];
+        }else{
+          sum += nums[i];
+        }
+        
+        maxSum = max(sum , maxSum);
+      }
+      
+      return maxSum > sum ? maxSum : sum;
+}
+
+void ArrayHelper::MainEntry() {
+    vector<int> c = {
+        -2,1,-3,4,-1,2,1,-5,4
+    };
+    ArrayHelper a;
+    cout << "maxSubArray: " << a.maxSubArray(c) << endl;
+}

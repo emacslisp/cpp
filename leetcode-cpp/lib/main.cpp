@@ -4,6 +4,7 @@
 #include "StringHelper.h"
 #include "NumberHelper.h"
 #include "Tree.h"
+#include "ArrayHelper.h"
 
 int main() {
     // Graph a;
@@ -16,6 +17,9 @@ int main() {
 
     Tree t;
     t.MainEntry();
+    
+    ArrayHelper arrayHelper;
+    arrayHelper.MainEntry();
     
     return 0;
 }
