@@ -13,5 +13,6 @@ class NumberHelper {
 public:
     string NumberToBinary(int N);
     string thousandSeparator(int n);
+    int MySqrt(int x);
     int MainEntry();
 };

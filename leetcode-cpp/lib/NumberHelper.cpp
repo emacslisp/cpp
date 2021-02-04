@@ -27,11 +27,50 @@ string NumberHelper::thousandSeparator(int n) {
         }
         reverse(result.begin(), result.end());
         return result;
+}
+
+int NumberHelper::MySqrt(int x)
+{
+    if (x == 0)
+        return 0;
+    if (x == 1)
+        return 1;
+
+    int l = 1, w = x, res = 0;
+
+    int mid;
+    while (l < w)
+    {
+        mid = (l + w) / 2;
+
+        if (mid > x / mid)
+        {
+            w = mid - 1;
+        }
+        else
+        {
+            //very important: mid * mid < x and x< (mid + 1) * (mide + 1), then mid is answer
+            if (mid + 1 > x / (mid + 1))
+                return mid;
+
+            l = mid + 1;
+
+            if (l == x / l)
+                return l;
+        }
     }
+
+    return w;
+}
 
 int NumberHelper::MainEntry() {
     NumberHelper n;
+    cout << "================= NumberHelper =====================" << endl;
+    cout << "NumberHelper.NumberToBinary convert number to Binary: " << endl;
     cout<< n.NumberToBinary(1025) << endl;
+    cout << "NumberHelper.thousandSeparator - adding separator for thousand: " << endl;
     cout << n.thousandSeparator(123456789) << endl;
+
+    cout << n.MySqrt(1000) << endl;
     return 0;
 }

@@ -7,6 +7,7 @@
             "args": [
                 "-g",
                 "${file}",
+                "-DFILEIO",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
@@ -26,6 +27,7 @@
             "args": [
                 "-g",
                 "${file}",
+                "-DFILEIO",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

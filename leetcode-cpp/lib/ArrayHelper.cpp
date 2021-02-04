@@ -32,5 +32,7 @@ void ArrayHelper::MainEntry() {
         -2,1,-3,4,-1,2,1,-5,4
     };
     ArrayHelper a;
+
+    cout << "================= ArrayHelper =====================" << endl;
     cout << "maxSubArray: " << a.maxSubArray(c) << endl;
 }
