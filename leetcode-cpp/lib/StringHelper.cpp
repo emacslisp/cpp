@@ -88,6 +88,8 @@ int StringHelper::isLetter(char *s)
 
 int StringHelper::MainEntry() {
     StringHelper s;
+
+    cout << "================= StringHelper =====================" << endl;
     cout << s.revert("abcdef") << endl;
 
     string x = "I want to do something!!1";

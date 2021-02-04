@@ -95,7 +95,7 @@ TreeNode *Tree::buildNode(vector<int> a)
 
 void Tree::MainEntry() {
   Tree t;
-
+  cout << "================= Tree =====================" << endl;
   #define null -1
     vector<int> c
     {
