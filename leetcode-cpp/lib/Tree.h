@@ -15,5 +15,7 @@ public:
     Node* buildNaryTreeNode(vector<int> c);
     int TreeHeight(TreeNode *root);
     int TreeHeight(Node *root);
+
+    TreeNode* searchNodeByValue(TreeNode *root, int x);
     void MainEntry();
 };

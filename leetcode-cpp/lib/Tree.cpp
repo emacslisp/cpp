@@ -58,6 +58,18 @@ int Tree::TreeHeight(Node* root) {
   return max + 1;
 }
 
+TreeNode* Tree::searchNodeByValue(TreeNode* root, int x) {
+  if(root == NULL) return NULL;
+  if(root->val == x) return root;
+
+  TreeNode* n1 = Tree::searchNodeByValue(root->left, x);
+  TreeNode* n2 = Tree::searchNodeByValue(root->right, x);
+
+  if(n1 != NULL) return n1;
+  if(n2 != NULL) return n2;
+  return NULL;
+}
+
 TreeNode *Tree::buildNode(vector<int> a)
 {
   queue<TreeNode *> q;
