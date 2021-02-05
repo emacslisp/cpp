@@ -30,6 +30,23 @@ char StringHelper::toUpper(char c) {
     return c;
 }
 
+vector<string> StringHelper::splitByString(string s, string delim) {
+    vector<string> result;
+    auto start = 0U;
+    auto end = s.find(delim);
+
+    while (end != std::string::npos)
+    {
+        result.push_back(s.substr(start, end - start));
+        start = end + delim.length();
+        end = s.find(delim, start);
+    }
+
+    result.push_back(s.substr(start, end - start));
+
+    return result;
+}
+
 vector<string> StringHelper::splitByChar(string s, char c) {
     vector<string> result;
     string t;
@@ -92,7 +109,7 @@ int StringHelper::MainEntry() {
     cout << "================= StringHelper =====================" << endl;
     cout << s.revert("abcdef") << endl;
 
-    string x = "I want to do something!!1";
+    string x = "I want to do  something!!1";
     vector<string> result = s.splitByChar(x, ' ');
     for(string m: result) {
         cout<<m<<endl;
@@ -103,5 +120,9 @@ int StringHelper::MainEntry() {
 
     cout<<"toUpperStr example:"<<endl;
     cout<<s.toUpperStr(x)<<endl;
+
+    result = s.splitByString("dababc", "ab");
+    for(auto x: result)
+        cout<< x << endl;
     return 0;
 }
