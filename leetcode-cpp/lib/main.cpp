@@ -5,6 +5,7 @@
 #include "NumberHelper.h"
 #include "Tree.h"
 #include "ArrayHelper.h"
+#include "DateTimeHelper.h"
 
 int main() {
     // Graph a;
@@ -20,6 +21,9 @@ int main() {
     
     ArrayHelper arrayHelper;
     arrayHelper.MainEntry();
+
+    DateTimeHelper dateTimeHelper;
+    dateTimeHelper.MainEntry();
     
     return 0;
 }
