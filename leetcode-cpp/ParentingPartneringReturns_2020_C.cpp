@@ -11,10 +11,29 @@
 #include <map>
 
 using namespace std;
-bool cmp(pair<int, int>& a, 
-            pair<int, int>& b) 
+
+
+class TPair {
+public:
+    int start;
+    int end;
+    int index;
+    TPair() {
+         this->start = 0;
+        this->end = 0;
+        this->index = 0;
+    }
+    TPair(int start, int end, int index) {
+        this->start = start;
+        this->end = end;
+        this->index = index;
+    }
+};
+
+bool cmp(TPair& a, 
+            TPair& b) 
     { 
-        return a.first < b.first; 
+        return a.start < b.start; 
     } 
 
 int main(int argc, char **argv)
@@ -36,28 +55,26 @@ int main(int argc, char **argv)
         for(int u = 0; u<N; u++) {
             scanf("%d %d\n", &array[u][0], &array[u][1]);
         }
-        vector<pair<int,int>> vp;
-        map<pair<int,int>,int> m;
+        vector<TPair> vp;
         for(int u = 0; u<N; u++) {
-            pair<int, int> p = pair<int, int> (array[u][0], array[u][1]);
+            TPair p(array[u][0], array[u][1], u);
             vp.push_back(p);
-            m[p] = u;
         }
 
-        vector<pair<int,int>> cj(2);
-        cj[0] = pair<int,int>(0, 0);
-        cj[1] = pair<int,int>(0, 0);
+        vector<TPair> cj(2);
+        cj[0] = TPair(0,0,0);
+        cj[1] = TPair(0,0,0);
         string result(N, '.');
 
         sort(vp.begin(), vp.end(), cmp);
         for(int i=0;i<vp.size();i++) {
-                pair<int, int> tp = vp[i];
-                if(cj[0].second<=tp.first) {
-                    result[m[tp]] = 'C';
+                TPair tp = vp[i];
+                if(cj[0].end<=tp.start) {
+                    result[tp.index] = 'C';
                     cj[0] = tp;
                 }
-                else if(cj[1].second<=tp.first) {
-                    result[m[tp]] = 'J';
+                else if(cj[1].end<=tp.start) {
+                    result[tp.index] = 'J';
                     cj[1] = tp;
                 } else {
                     result = "IMPOSSIBLE";
