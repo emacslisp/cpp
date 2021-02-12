@@ -63,6 +63,21 @@ int NumberHelper::MySqrt(int x)
     return w;
 }
 
+int NumberHelper::gcd(int a, int b) 
+{ 
+        if (a == 0) 
+            return b; 
+        return gcd(b % a, a); 
+} 
+int NumberHelper::findGCDInArray(vector<int> arr) 
+{ 
+    int result = arr[0]; 
+    for (int i = 1; i < arr.size(); i++) 
+        result = gcd(arr[i], result); 
+
+    return result; 
+} 
+
 int NumberHelper::MainEntry() {
     NumberHelper n;
     cout << "================= NumberHelper =====================" << endl;

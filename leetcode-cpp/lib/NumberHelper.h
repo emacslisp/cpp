@@ -14,5 +14,7 @@ public:
     string NumberToBinary(int N);
     string thousandSeparator(int n);
     int MySqrt(int x);
+    int gcd(int a, int b);
+    int findGCDInArray(vector<int> arr);
     int MainEntry();
 };
