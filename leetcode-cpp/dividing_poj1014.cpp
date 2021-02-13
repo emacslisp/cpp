@@ -6,7 +6,6 @@
 #include <iostream>
 using namespace std;
 
-#define FILEIO
 #define Max(a, b) a > b ? a : b
 
 void output(bool isDivided, int collection)
@@ -24,10 +23,11 @@ void output(bool isDivided, int collection)
     printf("\n");
 }
 
+int dp[6*20000 + 10][20000 + 10];
 bool check(vector<int> nums, int sum)
 {
-    vector<vector<int>> dp(sum + 1, vector<int>(nums.size() + 1, 0));
-
+    
+    memset(dp, 0 ,sizeof(dp));
     for (int i = 1; i <= sum; i++)
     {
         for (int j = 0; j < nums.size(); j++)
