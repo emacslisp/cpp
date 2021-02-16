@@ -12,5 +12,7 @@ public:
     vector<int> revert(vector<int> c);
     int maxSubArray(vector<int> c);
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2);
+    void bubbleSort(vector<int> &nums);
+    void swap(int *a, int *b);
     void MainEntry();
 };

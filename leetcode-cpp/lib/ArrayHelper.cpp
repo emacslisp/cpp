@@ -1,5 +1,22 @@
 #include "ArrayHelper.h"
 
+void ArrayHelper::swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void ArrayHelper::bubbleSort(vector<int> &nums) {
+    int N = nums.size();
+    for(int i = 0; i< N;i++) {
+        for(int j=0;j<N-1;j++) {
+            if(nums[j] > nums[j+1]) {
+                swap(&nums[j], &nums[j+1]);
+            }
+        }
+    }
+}
+
 vector<int> ArrayHelper::revert(vector<int> c) {
     /*vector<int> result;
     for(int i=c.size()-1;i>=0;i--) {
@@ -53,4 +70,10 @@ void ArrayHelper::MainEntry() {
 
     cout << "================= ArrayHelper =====================" << endl;
     cout << "maxSubArray: " << a.maxSubArray(c) << endl;
+
+    a.bubbleSort(c);
+    for(int x: c) {
+        cout << x << " ";
+    }
+    cout << endl;
 }
