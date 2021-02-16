@@ -2,6 +2,7 @@
 #include <iostream>
 #include <climits>
 #include <algorithm>
+#include <string>
 #include <queue>
 #include <stack>
 #include <map>
