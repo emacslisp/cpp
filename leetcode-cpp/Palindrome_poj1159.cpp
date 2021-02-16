@@ -6,7 +6,6 @@
 #include <iostream>
 using namespace std;
 
-#define FILEIO
 #define Max(a, b) a > b ? a : b
 short int c[5001][5001];
 
