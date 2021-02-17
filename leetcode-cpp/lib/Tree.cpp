@@ -70,6 +70,30 @@ TreeNode* Tree::searchNodeByValue(TreeNode* root, int x) {
   return NULL;
 }
 
+vector<int> Tree::buildTreeToArray(TreeNode *root) {
+  queue<TreeNode *> q;
+  q.push(root);
+
+  vector<int> result;
+
+  while(q.size() > 0) {
+    TreeNode *p = q.front();
+    if(p == NULL) {
+      result.push_back(-1);
+      q.pop();
+      continue;
+    }
+    result.push_back(p->val);
+    q.pop();
+
+    if(p->left == NULL && p->right == NULL) continue;
+    
+      q.push(p->left);
+      q.push(p->right);
+  }
+  return result;
+}
+
 TreeNode *Tree::buildNode(vector<int> a)
 {
   queue<TreeNode *> q;
@@ -116,6 +140,15 @@ void Tree::MainEntry() {
 
     Node *root;
     root = t.buildNaryTreeNode(c);
+
+    TreeNode* r = t.buildNode(c);
+
+    vector<int> output = t.buildTreeToArray(r);
+
+    for(int x: output) {
+      cout << x << " ";
+    }
+    cout << endl;
 
     int result = t.TreeHeight(root);
     cout<<result<<endl;

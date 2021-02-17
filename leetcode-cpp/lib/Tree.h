@@ -13,6 +13,7 @@ public:
     ~Tree();
     TreeNode* buildNode(vector<int> a);
     Node* buildNaryTreeNode(vector<int> c);
+    vector<int> buildTreeToArray(TreeNode* root);
     int TreeHeight(TreeNode *root);
     int TreeHeight(Node *root);
 
