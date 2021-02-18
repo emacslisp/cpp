@@ -94,6 +94,23 @@ vector<int> Tree::buildTreeToArray(TreeNode *root) {
   return result;
 }
 
+TreeNode* Tree::buildBalancedTree(vector<int>& nums, int start, int end) {
+    if (start > end) {
+        return NULL;
+    }
+    
+    int mid = start + (end-start)/2;
+    TreeNode* root = new TreeNode(nums[mid]);
+    root->left = buildBalancedTree(nums, start, mid-1);
+    root->right = buildBalancedTree(nums, mid+1, end);
+    return root;
+}
+
+TreeNode* Tree::buildBalancedTreeFromArray(vector<int> a) {
+  sort(a.begin(), a.end());
+  return this -> buildBalancedTree(a, 0, a.size() - 1);
+}
+
 TreeNode *Tree::buildNode(vector<int> a)
 {
   queue<TreeNode *> q;
@@ -152,4 +169,16 @@ void Tree::MainEntry() {
 
     int result = t.TreeHeight(root);
     cout<<result<<endl;
+
+    vector<int> cb {
+      1,2,3,4,5,6,7
+    };
+
+    r = t.buildBalancedTreeFromArray(cb);
+    output = t.buildTreeToArray(r);
+
+    for(int x: output) {
+      cout << x << " ";
+    }
+    cout << endl;
 }
