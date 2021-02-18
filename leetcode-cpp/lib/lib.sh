@@ -1,6 +1,8 @@
+echo "building cpp file"
 for fname in *.cpp
 do
     if [ "${fname%%.*}" != "main" ]; then
+        echo ${fname%%.*}.cpp
         g++ -gdwarf-2 -g3 -fPIC -std=c++11 -c ${fname%%.*}.cpp -o ${fname%%.*}.o
     fi
 done

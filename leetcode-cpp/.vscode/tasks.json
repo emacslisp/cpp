@@ -24,9 +24,10 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++-9 build active file",
-            "command": "/usr/local/bin/g++-9",
+            "command": "g++",
             "args": [
-                "-g",
+                "-g3",
+                "-std=c++11",
                 "${file}",
                 "-DFILEIO",
                 "./lib/lib.a",
