@@ -78,6 +78,36 @@ int NumberHelper::findGCDInArray(vector<int> arr)
     return result; 
 } 
 
+int NumberHelper::romanToInt(string s) {
+    reverse(s.begin(), s.end());
+
+        vector<char> c {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+        vector<int> ic {1, 5, 10, 50, 100, 500, 1000};
+        map<char, int> m;
+
+        for(int i=0;i<c.size();i++) m[c[i]] = ic[i];
+
+        int count = 0;
+        int result = 0;
+        while(true) {
+
+            if(count + 1 < s.size() && m[s[count + 1]] < m[s[count]]) {
+                result += (m[s[count]] - m[s[count+1]]);
+                count+=2;
+            } 
+            else {
+                result += m[s[count]];
+                count++;
+            }
+
+            if(count >= s.size()) {
+                break;
+            }
+        }
+
+        return result;
+}
+
 int NumberHelper::MainEntry() {
     NumberHelper n;
     cout << "================= NumberHelper =====================" << endl;
@@ -87,5 +117,8 @@ int NumberHelper::MainEntry() {
     cout << n.thousandSeparator(123456789) << endl;
 
     cout << n.MySqrt(1000) << endl;
+
+    string s = "MCMXCIV";
+    cout << "roman to int: " << s << " result: " << n.romanToInt(s)  << endl;
     return 0;
 }

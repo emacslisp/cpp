@@ -17,5 +17,6 @@ public:
     int MySqrt(int x);
     int gcd(int a, int b);
     int findGCDInArray(vector<int> arr);
+    int romanToInt(string s);
     int MainEntry();
 };
