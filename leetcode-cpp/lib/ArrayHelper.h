@@ -14,5 +14,6 @@ public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2);
     void bubbleSort(vector<int> &nums);
     void swap(int *a, int *b);
+    int search(vector<int> &num, int target);
     void MainEntry();
 };

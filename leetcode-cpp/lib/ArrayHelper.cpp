@@ -62,6 +62,33 @@ vector<int> ArrayHelper::intersect(vector<int>& nums1, vector<int>& nums2) {
         return result;
 }
 
+int ArrayHelper::search(vector<int> &nums, int target)
+{
+    int start = 0;
+    int end = nums.size() - 1;
+
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+
+        if (nums[mid] == target)
+        {
+            return mid;
+        }
+
+        if (nums[mid] > target)
+        {
+            end = mid - 1;
+        }
+        else if (nums[mid] < target)
+        {
+            start = mid + 1;
+        }
+    }
+
+    return -1;
+}
+
 void ArrayHelper::MainEntry() {
     vector<int> c = {
         -2,1,-3,4,-1,2,1,-5,4
@@ -76,4 +103,7 @@ void ArrayHelper::MainEntry() {
         cout << x << " ";
     }
     cout << endl;
+
+    int result = a.search(c, -5);
+    cout << "find -5's index in array " << result << endl;
 }
