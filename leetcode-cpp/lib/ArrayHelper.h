@@ -15,5 +15,6 @@ public:
     void bubbleSort(vector<int> &nums);
     void swap(int *a, int *b);
     int search(vector<int> &num, int target);
+    int subArrayEqualsK(vector<int> num, int k);
     void MainEntry();
 };

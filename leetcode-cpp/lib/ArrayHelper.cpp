@@ -26,6 +26,28 @@ vector<int> ArrayHelper::revert(vector<int> c) {
     return c;
 }
 
+// in O(n) using prefix sum and hash map
+int ArrayHelper::subArrayEqualsK(vector<int> nums, int k) {
+        vector<int> v;
+        int sum = 0;
+        v.push_back(sum);
+
+        for(int x: nums) {
+            sum+=x;
+            v.push_back(sum);
+        }
+
+        map<int, int> m;
+        int count = 0;
+        for(int i=0;i<v.size();i++) {
+            int t = v[i];
+            if(m.count(t-k) > 0) 
+                count+=m[t-k];
+            m[t]++;
+        }
+        return count;
+}
+
 int ArrayHelper::maxSubArray(vector<int> nums) {
     if(nums.size() == 1)return nums[0];
       
@@ -106,4 +128,7 @@ void ArrayHelper::MainEntry() {
 
     int result = a.search(c, -5);
     cout << "find -5's index in array " << result << endl;
+
+    result = a.subArrayEqualsK(c, 5);
+    cout << "number of sub array equals 5: " << result << endl;
 }
