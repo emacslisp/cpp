@@ -1,0 +1,1 @@
+g++ hello.cpp -o hello_sdl2.run -lSDL2
