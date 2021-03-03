@@ -49,6 +49,12 @@ int main() {
 
     Tree t;
     root = t.buildNode(c);
+    vector<int> vc = t.buildTreeToArray(root);
+
+    for(int x : vc) {
+        cout << x << " ";
+    }
+    cout << endl;
 
     TreeNode* result = s.increasingBST(root);
     cout<<result->val<<endl;
