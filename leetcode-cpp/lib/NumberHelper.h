@@ -18,5 +18,6 @@ public:
     int gcd(int a, int b);
     int findGCDInArray(vector<int> arr);
     int romanToInt(string s);
+    string multiply(string num1, string num2);
     int MainEntry();
 };

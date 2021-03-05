@@ -1,5 +1,36 @@
 #include "NumberHelper.h"
 
+string NumberHelper::multiply(string num1, string num2) {
+    if(num1 == "0" || num2 == "0") return "0";
+    int m = num1.size();
+    int n = num2.size();
+    string result(m+n, '0');
+    reverse(num1.begin(), num1.end());
+    reverse(num2.begin(), num2.end());
+
+    int multiFlag = 0;
+    int addFlag = 0;
+
+    for(int i=0;i<n;i++) {
+        multiFlag = 0;
+        addFlag = 0;
+        for(int j=0;j<m;j++) {
+            int t1 = (num1[j] - '0') * (num2[i] - '0') + multiFlag;
+            multiFlag = t1/10;
+            t1 %= 10;
+            int t2 = (result[i+j] - '0') + t1 + addFlag;
+            addFlag = t2/10;
+            result[i+j] = t2%10 + '0';
+        }
+        result[i+m] += multiFlag + addFlag;
+    }
+
+    reverse(result.begin(), result.end());
+
+    if(result[0] == '0') result.erase(result.begin());
+    return result;
+}
+
 string NumberHelper::NumberToBinary(int N) {
     int p = N;
     string output;
@@ -120,5 +151,7 @@ int NumberHelper::MainEntry() {
 
     string s = "MCMXCIV";
     cout << "roman to int: " << s << " result: " << n.romanToInt(s)  << endl;
+
+    cout << "123456789 * 12 = " << n.multiply("923456789", "12") << endl;
     return 0;
 }
