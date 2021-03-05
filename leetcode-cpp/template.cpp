@@ -5,23 +5,19 @@
 #include <queue>
 #include <stack>
 #include <map>
+#include <math.h>
 
-#define Max(a, b) a > b ? a : b
-#define Min(a, b) a < b ? a : b
+#define ll long long
 
 using namespace std;
 
-
 class Solution {
 public:
-    string restoreString(string s, vector<int>& indices) {
-        vector<char> result(s.size());
-
-        for(int i=0;i<s.size();i++) {
-            result[indices[i]] = s[i];
-        }
-        string str(result.begin(), result.end());
-        return str;
+    int arrangeCoins(int n) {
+        ll c = (ll)8*(ll)n + (ll)1;
+        int level = (sqrt(c) - 1)/2;
+        
+        return level;
     }
 };
 
@@ -33,7 +29,7 @@ int main() {
     };
 
     string str = "codeleet";
-
-    string result = s.restoreString(str, c);
+    int n = 1804289383;
+    int result = s.arrangeCoins(n);
     cout<<result<<endl;
 }
