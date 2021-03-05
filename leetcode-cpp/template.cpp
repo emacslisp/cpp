@@ -6,10 +6,9 @@
 #include <stack>
 #include <map>
 #include <math.h>
+using namespace std;
 
 #define ll long long
-
-using namespace std;
 
 class Solution {
 public:
