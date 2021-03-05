@@ -16,5 +16,6 @@ public:
     void swap(int *a, int *b);
     int search(vector<int> &num, int target);
     int subArrayEqualsK(vector<int> num, int k);
+    int minimumPathSum(vector< vector<int> >& grid);
     void MainEntry();
 };
