@@ -1,5 +1,20 @@
 #include "StringHelper.h"
 
+string StringHelper::gcdOfStrings(string str1, string str2)
+{
+    if (str1 == str2)
+        return str1;
+
+    if (str1.size() < str2.size())
+        return gcdOfStrings(str2, str1);
+
+    size_t p = str1.find(str2);
+    if (p != 0)
+        return "";
+
+    return gcdOfStrings(str1.substr(str2.size()), str2);
+}
+
 string StringHelper::toLowerStr(string s) {
     string result;
     for(char c:s) {
@@ -124,5 +139,10 @@ int StringHelper::MainEntry() {
     result = s.splitByString("dababc", "ab");
     for(auto x: result)
         cout<< x << endl;
+
+    string str1 = "ABABAB";
+    string str2 = "ABAB";
+    string gcdResult = s.gcdOfStrings(str1, str2);
+    cout << "GCD of two string " << str1 << " " << str2 << " is : " << gcdResult << endl;
     return 0;
 }
