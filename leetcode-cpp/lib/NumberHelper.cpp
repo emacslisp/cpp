@@ -1,5 +1,22 @@
 #include "NumberHelper.h"
 
+int NumberHelper::stringToNumber(string num) {
+    /*
+    Since C++11 converting string to floating-point values (like double) is available with functions:
+    stof - convert str to a float
+    stod - convert str to a double
+    stold - convert str to a long double
+
+    As conversion of string to int was also mentioned in the question, there are the following functions in C++11:
+    stoi - convert str to an int
+    stol - convert str to a long
+    stoul - convert str to an unsigned long
+    stoll - convert str to a long long
+    stoull - convert str to an unsigned long long
+    */
+    return stoi(num);
+}
+
 string NumberHelper::multiply(string num1, string num2) {
     if(num1 == "0" || num2 == "0") return "0";
     int m = num1.size();
