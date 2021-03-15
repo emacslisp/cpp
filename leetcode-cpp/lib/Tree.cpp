@@ -8,6 +8,17 @@ Tree::~Tree()
 {
 }
 
+int Tree::longestPathInTree(TreeNode *root) {
+        if(root == NULL) return 0;
+        int l = TreeHeight(root->left);
+        int r = TreeHeight(root->right);
+        int d = l+r;
+        return max(d, 
+                   max(longestPathInTree(root->left), 
+                       longestPathInTree(root->right)));
+
+}
+
 Node *Tree::buildNaryTreeNode(vector<int> c)
 {
   queue<Node *> q;
@@ -41,9 +52,7 @@ int Tree::TreeHeight(TreeNode* root) {
   int left = TreeHeight(root->left);
   int right = TreeHeight(root->right);
 
-  if(left > right) return left + 1;
-
-  return right + 1;
+  return 1 + max(left, right);
 }
 
 int Tree::TreeHeight(Node* root) {
@@ -160,6 +169,9 @@ void Tree::MainEntry() {
 
     TreeNode* r = t.buildNode(c);
 
+    int result = t.longestPathInTree(r);
+    cout << "longest path in binary tree is: " << result << endl;
+
     vector<int> output = t.buildTreeToArray(r);
 
     for(int x: output) {
@@ -167,7 +179,7 @@ void Tree::MainEntry() {
     }
     cout << endl;
 
-    int result = t.TreeHeight(root);
+    result = t.TreeHeight(root);
     cout<<result<<endl;
 
     vector<int> cb {

@@ -20,6 +20,7 @@ public:
     int TreeHeight(Node *root);
 
     TreeNode* searchNodeByValue(TreeNode *root, int x);
+    int longestPathInTree(TreeNode *root);
     void MainEntry();
 private:
     TreeNode* buildBalancedTree(vector<int>& nums, int start, int end);
