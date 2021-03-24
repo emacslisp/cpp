@@ -16,7 +16,7 @@ public:
         if(s1.size() != s2.size()) return false;
 
         vector<int> diff;
-        int count;
+        int count = 0;
         for(int i=0;i<s1.size();i++) {
             if(s1[i] != s2[i]) {
                 count ++;
