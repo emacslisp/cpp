@@ -16,6 +16,14 @@
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "C/C++: g++-9 build active file"
+        },
+        {
+            "name": "Python: Arquivo Atual",
+            "type": "python",
+            "request": "launch",
+            "program": "interactive_runner.py",
+            "console": "integratedTerminal",
+            "args": ["python3", "local_testing_tool.py", "0", "--", "./MedianSort_D_QR_2021.run"]  // Not sure if `${file}` will work here.
         }
     ]
 }
