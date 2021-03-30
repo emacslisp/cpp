@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <queue>
+#include <algorithm>
 #include "TreeNode.h"
 #include "Node.h"
 
