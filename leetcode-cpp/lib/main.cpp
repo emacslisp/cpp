@@ -6,6 +6,7 @@
 #include "Tree.h"
 #include "ArrayHelper.h"
 #include "DateTimeHelper.h"
+#include "MyQueue.h"
 
 int main() {
     // Graph a;
@@ -24,6 +25,9 @@ int main() {
 
     DateTimeHelper dateTimeHelper;
     dateTimeHelper.MainEntry();
+
+    MyQueue myQueue;
+    myQueue.MainEntry();
     
     return 0;
 }
