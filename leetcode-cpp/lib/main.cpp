@@ -7,6 +7,7 @@
 #include "ArrayHelper.h"
 #include "DateTimeHelper.h"
 #include "MyQueue.h"
+#include "KthLargest.h"
 
 int main() {
     // Graph a;
@@ -28,6 +29,9 @@ int main() {
 
     MyQueue myQueue;
     myQueue.MainEntry();
+
+    KthLargest k;
+    k.MainEntry();
     
     return 0;
 }
