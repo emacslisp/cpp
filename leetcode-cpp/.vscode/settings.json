@@ -53,6 +53,7 @@
         "optional": "cpp",
         "system_error": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__locale": "cpp"
     }
 }
