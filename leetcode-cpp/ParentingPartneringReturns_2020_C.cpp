@@ -12,6 +12,8 @@
 
 using namespace std;
 
+#define forx(i, start, end) for(int i=start;i<end;i++)
+#define fory(i, start, end) for(int i=end;i>=start;i--)
 
 class TPair {
 public:
