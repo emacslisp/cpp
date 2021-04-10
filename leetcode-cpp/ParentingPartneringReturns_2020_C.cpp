@@ -12,8 +12,11 @@
 
 using namespace std;
 
+#define ll long long
 #define forx(i, start, end) for(int i=start;i<end;i++)
 #define fory(i, start, end) for(int i=end;i>=start;i--)
+const double pi=acos(-1.0);
+const double eps=1e-11;
 
 class TPair {
 public:
