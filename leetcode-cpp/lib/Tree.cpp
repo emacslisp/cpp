@@ -8,6 +8,35 @@ Tree::~Tree()
 {
 }
 
+void pathSumDfs(TreeNode *root, int sum, vector<int> &v, int &count)
+{
+  if (root == NULL)
+    return;
+  v.push_back(root->val);
+
+  pathSumDfs(root->left, sum, v, count);
+  pathSumDfs(root->right, sum, v, count);
+
+  int cursum = 0;
+  for (int j = v.size() - 1; j >= 0; j--)
+  {
+    cursum += v[j];
+    if (cursum == sum)
+      count++;
+  }
+  v.pop_back();
+}
+
+int Tree::pathSum(TreeNode *root, int sum)
+{
+  if (root == NULL)
+    return 0;
+  vector<int> v;
+  int count = 0;
+  pathSumDfs(root, sum, v, count);
+  return count;
+}
+
 int Tree::longestPathInTree(TreeNode *root) {
         if(root == NULL) return 0;
         int l = TreeHeight(root->left);
@@ -193,4 +222,13 @@ void Tree::MainEntry() {
       cout << x << " ";
     }
     cout << endl;
+
+    vector<int> c1
+    {
+       10,5,-3,3,2,null,11,3,-2,null,1
+    };
+
+    r = t.buildNode(c1);
+    result = t.pathSum(r, 8);
+    cout << "Path Sum Counter: " << result << endl;
 }

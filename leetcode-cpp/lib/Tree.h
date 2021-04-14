@@ -22,6 +22,7 @@ public:
 
     TreeNode* searchNodeByValue(TreeNode *root, int x);
     int longestPathInTree(TreeNode *root);
+    int pathSum(TreeNode* root, int sum);
     void MainEntry();
 private:
     TreeNode* buildBalancedTree(vector<int>& nums, int start, int end);
