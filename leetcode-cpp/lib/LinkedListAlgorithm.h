@@ -8,4 +8,5 @@ class LinkedListAlgorithm {
         ListNode* revertList(ListNode* head);
         ListNode* arrayToList(vector<int> c);
         vector<int> listToArray(ListNode *head);
+        void printListNode(ListNode *head);
 };

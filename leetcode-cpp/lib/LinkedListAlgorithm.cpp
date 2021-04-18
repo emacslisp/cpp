@@ -45,3 +45,12 @@ ListNode *LinkedListAlgorithm::arrayToList(vector<int> c)
 
 	return head;
 }
+
+void LinkedListAlgorithm::printListNode(ListNode *head) {
+	ListNode *p = head;
+	while(p != NULL) {
+		cout << p->val << " ";
+		p = p->next;
+	}
+	cout << endl;
+}
