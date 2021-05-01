@@ -7,5 +7,5 @@ do
     fi
 done
 
-ar r ftp-client.a *.o
-gcc -gdwarf-2 -g3 -shared *.o -o ftp-client.so
+ar r ftp-server.a *.o
+gcc -gdwarf-2 -g3 -shared *.o -o ftp-server.so
