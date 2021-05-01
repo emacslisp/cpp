@@ -290,6 +290,29 @@ cmdabort(int ignore)
 	if (ptflag) siglongjmp(ptabort,1);
 }
 
+char buffer[128];
+char *getCommand(const char *fmt, ...) {
+	memset(buffer, '\0', 128*sizeof(char));
+	va_list ap;
+	int r;
+	void (*oldintr)(int);
+
+	abrtflag = 0;
+
+	printf("---> ");
+	va_start(ap, fmt);
+	if (strncmp("PASS ", fmt, 5) == 0)
+		printf("PASS XXXX");
+	else {
+		vfprintf(stdout, fmt, ap);
+		vsprintf(buffer, fmt, ap);
+	}
+	va_end(ap);
+	printf("\n");
+	(void) fflush(stdout);
+	fflush(buffer);
+}
+
 int
 command(const char *fmt, ...)
 {
@@ -298,17 +321,18 @@ command(const char *fmt, ...)
 	void (*oldintr)(int);
 
 	abrtflag = 0;
-	if (debug) {
-		printf("---> ");
-		va_start(ap, fmt);
-		if (strncmp("PASS ", fmt, 5) == 0)
-			printf("PASS XXXX");
-		else 
-			vfprintf(stdout, fmt, ap);
-		va_end(ap);
-		printf("\n");
-		(void) fflush(stdout);
-	}
+
+	printf("---> ");
+	va_start(ap, fmt);
+	if (strncmp("PASS ", fmt, 5) == 0)
+		printf("PASS XXXX");
+	else 
+		vfprintf(stdout, fmt, ap);
+	va_end(ap);
+	printf("\n");
+	(void) fflush(stdout);
+
+	/*
 	if (cout == NULL) {
 		perror ("No control connection for command");
 		code = -1;
@@ -325,7 +349,7 @@ command(const char *fmt, ...)
 	if (abrtflag && oldintr != SIG_IGN)
 		(*oldintr)(SIGINT);
 	(void) signal(SIGINT, oldintr);
-	return(r);
+	return(r);*/
 }
 
 char reply_string[BUFSIZ];		/* last line of previous reply */

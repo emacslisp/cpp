@@ -1,2 +1,8 @@
 ftp/*.o
 ftp/ftp-cli
+*.run
+ftp/*.a
+ftp/*.so
+ftp-server/*.o
+ftp-server/*.a
+ftp-server/*.so

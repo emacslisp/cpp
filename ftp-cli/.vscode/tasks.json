@@ -5,13 +5,16 @@
             "label": "C/C++: gcc build active file",
             "command": "/usr/bin/gcc",
             "args": [
-                "-g",
+                "-gdwarf-2",
+                "-g3",
                 "${file}",
+                "./ftp/ftp-client.a",
+                "./ftp-server/ftp-server.a",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}.run"
             ],
             "options": {
-                "cwd": "/usr/bin"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
