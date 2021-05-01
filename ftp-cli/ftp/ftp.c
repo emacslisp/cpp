@@ -65,6 +65,8 @@ char ftp_rcsid[] =
 
 #include "../version.h"
 
+#include "../ftp-server/main.h"
+
 int data = -1;
 off_t restart_point = 0;
 
@@ -310,12 +312,12 @@ char *getCommand(const char *fmt, ...) {
 	va_end(ap);
 	printf("\n");
 	(void) fflush(stdout);
-	fflush(buffer);
 }
 
 int
 command(const char *fmt, ...)
 {
+	memset(buffer, '\0', 128*sizeof(char));
 	va_list ap;
 	int r;
 	void (*oldintr)(int);
@@ -326,12 +328,15 @@ command(const char *fmt, ...)
 	va_start(ap, fmt);
 	if (strncmp("PASS ", fmt, 5) == 0)
 		printf("PASS XXXX");
-	else 
+	else {
 		vfprintf(stdout, fmt, ap);
+		vsprintf(buffer, fmt, ap);
+	}
 	va_end(ap);
 	printf("\n");
 	(void) fflush(stdout);
 
+	call_server(buffer);
 	/*
 	if (cout == NULL) {
 		perror ("No control connection for command");
