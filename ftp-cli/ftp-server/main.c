@@ -29,7 +29,7 @@ static void session_init(struct vsf_session* p_sess);
 static void env_init(void);
 static void limits_init(void);
 
-int call_server(char* buffer){
+void init_ftp_server() {
 struct vsf_session the_session =
   {
     /* Control connection */
@@ -69,6 +69,10 @@ struct vsf_session the_session =
 
   // vsf_parseconf_load_file("./vsftpd.conf", 1);
   getcwdEntry();
+}
+
+int call_server(char* buffer){
+
   printf("%s\n", buffer);
 }
 
