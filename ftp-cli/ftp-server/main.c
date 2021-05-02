@@ -19,6 +19,7 @@
 #include "ssl.h"
 
 #include "entity.h"
+#include "main.h"
 /*
  * Forward decls of helper functions
  */
@@ -28,8 +29,51 @@ static void session_init(struct vsf_session* p_sess);
 static void env_init(void);
 static void limits_init(void);
 
+int call_server(char* buffer){
+struct vsf_session the_session =
+  {
+    /* Control connection */
+    0, 0, 0, 0, 0,
+    /* Data connection */
+    -1, 0, -1, 0, 0, 0, 0,
+    /* Login */
+    1, 0, INIT_MYSTR, INIT_MYSTR,
+    /* Protocol state */
+    0, 1, INIT_MYSTR, 0, 0,
+    /* HTTP hacks */
+    0, INIT_MYSTR,
+    /* Session state */
+    0,
+    /* Userids */
+    -1, -1, -1,
+    /* Pre-chroot() cache */
+    INIT_MYSTR, INIT_MYSTR, INIT_MYSTR, INIT_MYSTR, 1,
+    /* Logging */
+    -1, -1, INIT_MYSTR, 0, 0, 0, INIT_MYSTR, 0,
+    /* Buffers */
+    INIT_MYSTR, INIT_MYSTR,
+    /* Parent <-> child comms */
+    -1, -1,
+    /* Number of clients */
+    0, 0,
+    /* Home directory */
+    INIT_MYSTR,
+    /* Secure connection state */
+    0, 0, 0, 0, 0, INIT_MYSTR, 0, -1, -1,
+    /* Login fails */
+    0
+  };
+  int config_loaded = 0;
+  int i;
+  // tunables_load_defaults();
+
+  // vsf_parseconf_load_file("./vsftpd.conf", 1);
+  getcwdEntry();
+  printf("%s\n", buffer);
+}
+
 int
-main(int argc, const char* argv[])
+main1(int argc, const char* argv[])
 {
   struct vsf_session the_session =
   {

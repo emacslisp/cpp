@@ -8,4 +8,4 @@ do
 done
 
 ar r ftp-client.a *.o
-gcc -gdwarf-2 -g3 -shared *.o -o ftp-client.so
+gcc -gdwarf-2 -g3 -shared *.o ../ftp-server/ftp-server.a -o ftp-client.so
