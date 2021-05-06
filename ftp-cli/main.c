@@ -27,6 +27,8 @@ char main_rcsid[] =
 #include <ctype.h>
 #include <netdb.h>
 #include <pwd.h>
+
+#include "ftp-server/main.h"
 #ifdef	__USE_READLINE__
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -111,6 +113,7 @@ main(volatile int argc, char **volatile argv)
 	else if (c->c_handler_0) c->c_handler_0();
 	else c->c_handler_1(marg);
 
+	init_ftp_server();
     dologin("localhost");
 }
 
