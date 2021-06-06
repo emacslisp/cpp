@@ -1,5 +1,18 @@
 #include "StringHelper.h"
 
+bool StringHelper::isSubstring(string str1, string str2) {
+    int index = 0;
+    for (int i = 0; i < str2.size(); i++)
+    {
+        if (str2[i] == str1[index])
+        {
+            index++;
+        }
+    }
+
+    return index == str1.size();
+}
+
 string StringHelper::gcdOfStrings(string str1, string str2)
 {
     if (str1 == str2)
@@ -144,5 +157,13 @@ int StringHelper::MainEntry() {
     string str2 = "ABAB";
     string gcdResult = s.gcdOfStrings(str1, str2);
     cout << "GCD of two string " << str1 << " " << str2 << " is : " << gcdResult << endl;
+
+
+    str1 = "axc";
+    str2 = "abxdc";
+
+    bool rSubString = s.isSubstring(str1, str2);
+    cout << "Is '" << str1 <<"' substring of '"<< str2 << "? " << rSubString << endl;
+
     return 0;
 }

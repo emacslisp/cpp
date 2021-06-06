@@ -20,4 +20,5 @@ public:
     char toUpper(char c);
     string toUpperStr(string s);
     string gcdOfStrings(string str1, string str2);
+    bool isSubstring(string str1, string str2);
 };
