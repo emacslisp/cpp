@@ -1,5 +1,11 @@
 #include "StringHelper.h"
 
+string StringHelper::md5Encoder(string input) {
+    char hexadecimal[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
+			'e', 'f' };
+    
+    return "";
+}
 bool StringHelper::isSubstring(string str1, string str2) {
     int index = 0;
     for (int i = 0; i < str2.size(); i++)
